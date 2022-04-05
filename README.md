@@ -113,3 +113,77 @@ JPA - Hibernate
                                         LocalDate startDate;
                                         LocalDate endDate;
                                     }
+
+    JPA?
+        Java Persistence API 
+        is a ORM specification .
+
+
+        MySQL         <---> connector driver                      toplink
+        Oracle        <---> thin driver         <----> JDBC <---> hibernate <---> JPA <----> APP
+        MsSQL Server  <---> jet driver                            ibates
+
+
+        JPA Annotations
+
+            @Entity                 class level
+            @Table                  class level
+
+            @Embadable              class level
+            @NamedQueries           class level
+
+            @Inheretence            class level
+            @DiscriminatorColumn    class level
+            @DiscriminatorValue     class level
+
+            @Column                 Field level
+            @Transiant              Field level
+
+            @Id                     Field level
+            @EmbededId              Field level
+            @GeneratedValue         Field level
+
+            @Enumarated             Field level
+            @Embeded                Field level
+            @OneToOne               Field level
+            @OneToMany              Field level
+            @ManyToOne              Field level
+            @ManyToMany             Field level
+
+            @JoinColumn             Field level
+
+        JPA Configuaration
+
+            project-root/META-INF/persistence.xml
+                <persistence-unit>
+                    ......
+                </persistence-unit>
+
+        JPA API
+
+            Persistence 
+                createEntityManagerFactory(String persistenceUnitName)
+                    EntityManagerFactory
+                        createEntityManager()
+                            EntityManager
+                                persist(entity)                     insertion
+                                merge(entity)                       updation
+                                remove(entity)                      deletion
+                                find(Entity.class,idValue)          retrival
+                                getTransaction()
+                                    EntityTransaction
+                                        begin()
+                                        commit()
+                                        rollback()
+                                createQuery(String jpql)        
+                                    Query
+                                        setParameter(String paramName,Object value);
+                                        getResultList()
+                                        getResultStream()
+                                createQuery(String jpql,Entity.class)        
+                                    TypedQuery
+                                        setParameter(String paramName,Object value);
+                                        getResultList()
+                                        getResultStream()
+
+        JPQL - Java Persistence Query Language
