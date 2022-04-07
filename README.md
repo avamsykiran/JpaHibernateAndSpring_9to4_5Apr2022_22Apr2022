@@ -187,3 +187,30 @@ JPA - Hibernate
                                         getResultStream()
 
         JPQL - Java Persistence Query Language
+
+            SQL                                                 JPQL
+
+            select * from students;                             select s from Student s
+
+            select btitle,zonar from books                      SELECT b.title,b.zonar FROM Book b
+
+            select title,adressLine1 from vendors;              SELECT v.title,v.address.adressLine1 FROM Vendor v
+
+            select e.fullName,d.deptName                        SELECT e.fullName,e.dept.deptName FROM Employee e
+            from emps e cross join depts d 
+            where e.dept_deptId=d.deptId;
+
+            select e.fullName,d.deptName                        SELECT e.fullName,d.deptName 
+            from emps e inner join depts d                      FROM Employee e INNER JOIN Department d
+            on e.dept_deptId=d.deptId;                          on e.dept=d
+
+            select d.deptName,count(*)                          SELECT d.deptName,COUNT(e)
+            from emps e inner join depts d                      FROM Employee e inner join Department d
+            on e.dept_deptId=d.deptId                           ON e.dept=d
+            group by d.deptName;                                GROUP BY d.deptName
+
+            select d.deptName,count(e.fullName)
+            from emps e right outer join depts d
+            on e.dept_deptId=d.deptId
+            group by d.deptName;
+
