@@ -123,14 +123,49 @@ Spring Core and Spring Context
             @ControllerAdvice
             @RestController
             @RestControllerAdvice ....etc
-
-        @Value
+        
+        @Scope                      singleton | prototype | request | session | global-session
+        
+        @Value                      inject values into primitve fields or string fields
+                                    from a properties.
+        
         @Autowired
         @Qualifier
-        @Primary
-        @Scope
+        
+            constructor injecton    @Autowired
+                                    public EmployeeService(EmployeeRepo empRepo){
+                                        //......
+                                    }
+
+            setter injection        @Autowired
+                                    public void setEmpRepo(EmployeeRepo empRepo){
+                                        //......
+                                    }
+
+            field injection         @Autowired
+                                    private EmployeeRepo empRepo;
+
+            autowiring by type
+                    if a bean's data type matches with
+                    an awaiting field, then they are autowired.
+
+            autowiring by name
+                    one can specify the mname of the bean we want to inject using
+                    @Qualifier   
         
     3. Java Based Configuaration
+
+        is a complimantory setup for Annotation based config.,
+
+        @Configuration
+        public class MyConfig {
+
+            @Bean
+            public LocalDate today(){
+                return LocalDate.now();
+            }
+        }
+
 
 
 
