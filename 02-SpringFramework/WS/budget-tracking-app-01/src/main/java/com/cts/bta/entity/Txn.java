@@ -121,6 +121,12 @@ public class Txn {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Txn [txnId=" + txnId + ", header=" + header + ", amount=" + amount + ", txnDate=" + txnDate + ", type="
+				+ type + "]";
+	}
 	
 	
 }
