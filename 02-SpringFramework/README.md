@@ -150,7 +150,7 @@ Spring Core and Spring Context
                     an awaiting field, then they are autowired.
 
             autowiring by name
-                    one can specify the mname of the bean we want to inject using
+                    one can specify the name of the bean we want to inject using
                     @Qualifier   
         
     3. Java Based Configuaration
@@ -166,9 +166,79 @@ Spring Core and Spring Context
             }
         }
 
+Spring Boot
+---------------------------------------------------------------------------------
 
+    is a spring module that offers RAD - Rapid Application Development
 
+    application = configuarations + code base.
 
+        spring web      configure the view engine, dispatcher servlet, validation engine, iin8..etc
+        spring security configure the type of authentication, roles, access rules ..etc.,
+        spring orm      configure the jpa provider, database related proeprties ..etc.,
+
+        ....
+
+    spring boot offers auto-configuaration, thats how the RAD is possible.
+
+    spring boot have multiple supportive modules for each spring module and these
+    supportive module are called starter packages
+
+    spring-web          spring-boot-starter-web
+    spring-security     spring-boot-starter-security
+    ...etc
+
+    these starter modules contian the basic spring module and default configs.
+
+    @SpringBootApplication  =   @AutoConfiguaration 
+                                @Configuaration
+                                @ComponentScan
+                                @PropertySource
+
+    Spring boot offers Runners.
+    These runners will help the developer to constamize the application
+    execution if needed.
+
+    Spring boot also offer inbuilt servers (embeded servers), if incase the
+    application is a server based application.
+
+    Applciation that are capable of executing themselve with an embeded server are called
+    server-less applications.
+
+    These server-less applciation are very good for contianarization like Docker or for
+    hosting on clouds like AWS.
+
+    A spring boot project can be created ..
+     a. using the STS ide
+     b. using Spring boot CLI
+     c. using Spring Initializer (https://start.spring.io)
+
+Spring Data JPA
+----------------------------------------------------------------------------------
+
+    is a spring boot based module that offers auto-implemented repositories.
+
+    CrudRepository
+        |
+        |- JpaRepository
+
+    @Entity
+    @Table(name="emps")
+    class Employee {
+
+        @Id
+        @GeenratedValue
+        private Long empId;
+        private String ename;
+        private Double salary;
+        private LocalDate joinDate;
+
+        .......
+    }
+
+    interface EmployeeRepository extends JpaRepository<Employee,Long> {
+
+    }
 
 
 
