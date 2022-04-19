@@ -251,7 +251,69 @@ Spring Data JPA
 Spring Web
 -------------------------------------------------------------------------------------
 
-    MVC
+    Multi-Layer Archetecture
+
+        Repo <-entities-> Service <-models-> UI
+
+    Model-View-Controller Archetecture
+
+        Repo <-entities-> Service <-models-> Controller <-----REQ
+                                                |
+                                                model
+                                                |
+                                                ↓
+                                                View  ------Resp--->
+
+    MVC 2 / Single Front Controller Archetecture
+
+                                             Controller1
+        Repo <-entities-> Service <-models-> Controller2 <-model-> FrontController <-----REQ
+                                             Controller3                | 
+                                                                        |
+                                                                        model
+                                                                        |
+                                                                        ↓
+                                                                        View  ------Resp--->
+
+        FrontController     DispatcherServlet (springframework)
+
+                                1. it recieves any and all requests from the cleint
+                                2. it is going to read the url and according to the url,
+                                        the req is forwarded to an underlying controller.
+                                        this is called url-mapping is done using SimpleUrlHandler class.
+                                3. the controller once done with the req will get back to the DispatcherServlet with
+                                    a viewName and a model.
+                                4. the DispatcherServlet will use InternalResourceViewResolver to find out
+                                 a view matching the viewName, and the model if any is supplied to that view and
+                                 the view is sent as a response.
+
+        Conmtroller         Is any POJO class that
+                                1. must be marked with @Controller 
+                                2. must have methods that are called action to handle the
+                                    requests.
+                                3. each of these methods are marked with @RequestMapping
+                                4. each of these methods must return viewName as String or
+                                    viewName and model as ModelAndView object.
+
+        SimpleUrlkHandler   is a class implmented from UrlHandler interface
+                            it creates a map of urls and controller::actionMethods
+                            and each time a req is received by the DispatcherServlet, according to the url
+                            of the req, a controller and its method is choosen.
+
+        InternalResourceViewResolver
+                            is a class implemented from ViewResolver.
+                            it has to properties prefix and suffix.
+                            when a view name is given to it, it returns the actual view file
+                            as prefix+viewName+suffix
+
+                                prefix=/pages/
+                                suffix=.jsp
+
+                                viewName=home
+                                
+                                viewPath = /pages/home.jsp
+
+
 
     REST - api
 
