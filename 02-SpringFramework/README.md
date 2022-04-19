@@ -230,6 +230,7 @@ Spring Data JPA
         @GeenratedValue
         private Long empId;
         private String ename;
+        private String mailId;
         private Double salary;
         private LocalDate joinDate;
 
@@ -237,11 +238,22 @@ Spring Data JPA
     }
 
     interface EmployeeRepository extends JpaRepository<Employee,Long> {
+        boolean existsByEname(String ename);
+        List<Employee> findAllByEname(String ename);
+        Employee findByMailId(String mailId);
+        List<Employee> findAllByJoinDate(LocalDate joinDate);
 
+        @Query("SELECT e FROM Employee e WHERE e.salary BETWEEN :lbound AND :ubound")
+        List<Employee> getAllWithingSalaryRange(double lbound,double ubound);
     }
 
 
+Spring Web
+-------------------------------------------------------------------------------------
 
+    MVC
+
+    REST - api
 
 
 
