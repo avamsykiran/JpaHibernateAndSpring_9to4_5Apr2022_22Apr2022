@@ -336,3 +336,23 @@ Spring Web
 
 
 
+BudgetTrackerApplication - CaseStudy - Monolithic Approach
+---------------------------------------------------------------------------
+
+    1. On the home-page , the list of existing account holders must be displayed
+        and each accountholder record must have a 'View Statement' link.
+        AccountHolder
+            ahId
+            fullName
+            mobile
+            mailId
+            totalCredit
+            totalDebit
+            currentBalance
+    2. A new AccountHolder can be added using accountholder-form-page.
+    3. statement-page msut display the list of transactions made by a particular
+        accountholder as and when the 'View Statement' link is clicked.
+    4. new transactions for each accountholder must be added using txn-form-page.
+    5. on the statement-page, 'DELETE' and 'EDIT' options for each txn are needed.
+    6. On the statement-page, we have to display the total credit, total debit and
+        the current balance
