@@ -21,6 +21,7 @@
 							<th>Header</th>
 							<th>Credit</th>
 							<th>Debit</th>
+							<th></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -31,6 +32,11 @@
 								<td style="text-align:left">${txn.header }</td>
 								<td style="text-align:right">${txn.type==TxnType.CREDIT?txn.amount+"":"" }</td>
 								<td style="text-align:right">${txn.type==TxnType.DEBIT?txn.amount+"":"" }</td>
+								<td>
+									<a href="editTxn?txnId=${txn.txnId }">EDIT</a>
+									<span>|</span>
+									<a href="delTxn?txnId=${txn.txnId }">DELETE</a>	
+								</td>
 							</tr>
 						</c:forEach>
 					</tbody>

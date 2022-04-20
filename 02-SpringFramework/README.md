@@ -313,7 +313,24 @@ Spring Web
                                 
                                 viewPath = /pages/home.jsp
 
+        Annotations
+            @Controller
+            @RequestMapping(value="",method=..)
+                @GetMapping
+                @PostMapping ....
+            @RequestParam("txnId")                       http://localhost:9999/delTxn?txnId=1
+            @ModelAttribute("")
+            @ControllerAdvice
+            @ExceptionHandler
 
+        javax.validation.constraints Annotations
+            @NotNull
+            @NotBlank
+            @Size
+            @Min
+            @Max
+            @Pattern
+            ....etc
 
     REST - api
 
