@@ -333,8 +333,65 @@ Spring Web
             ....etc
 
     REST - api
+                                 Web App
+                                 React App
+      Repo <---> BL  <---data--> Andriod App
+                                 Angular App
 
+        SOAP Web Services 
 
+            SOAP - Simple Object Access Protocol
+
+            xml as a meidum of communication
+
+            Web Service is the mehtod that has the bussiness logic and
+            is hosted centrally on a SOAP server.
+
+            - xml is not suitable to share binary data like images/files ..etc
+            - soap web service had no standard way of sharing error-some situations.
+
+        RESTful Web Service 
+
+            REpresentational State Transfer
+
+            accessed via http protocol.
+
+            HTTP suports a variety of media like xml,json,images,files ..etc.,
+
+            HTTP STATUS CODEs
+
+                1xx     indicate that a req is received by the server and is under process.
+                3xx     indicate that a response is being redirected to a different resource
+
+                2xx     indicate that the req is process successfully and came back with a resp.
+                        200     OK              use this code to indicate that a  RETRIVAL is success.
+                        201     CREATED         use this code to indicate that an INSERTION is success.
+                        203     ACCEPTED        use this code to indicate that an UPDATION is success.
+                        204     NO CONTENT      use this code to indicate that a  DELETION is success.
+
+                4xx     indicate that the req could not be processed due to a client side fault.
+                        400     BAD REQUEST     use this code to indicate that any valdiation related problems ...etc.
+                        401     UNAUTHORIZED
+                        404     NOT FOUND       use this code to indicate that a RETRIVAL fails.
+
+                5xx     indicate that the req could not be processed due to a server side fault.
+                        500     INTERNAL SERVER ERROR
+            
+            HTTP METHODS
+            
+                Employee        /emps
+                Txn             /txns
+                AccountHolders  /accounts
+
+                GET         retrive     /emps       retrive all employees
+                                        /emps/1     retrive single employee having employeeId 1
+                POST        insert
+                PUT         update
+                PATCH       update
+                DELETE      delete      /emps/1 
+
+            @RestController         = @Controller + @ResponseBody
+            @RestControllerAdvice   = @ControllerAdvice + @ResponseBody
 
 BudgetTrackerApplication - CaseStudy - Monolithic Approach
 ---------------------------------------------------------------------------
@@ -350,7 +407,7 @@ BudgetTrackerApplication - CaseStudy - Monolithic Approach
             totalDebit
             currentBalance
     2. A new AccountHolder can be added using accountholder-form-page.
-    3. statement-page msut display the list of transactions made by a particular
+    3. statement-page must display the list of transactions made by a particular
         accountholder as and when the 'View Statement' link is clicked.
     4. new transactions for each accountholder must be added using txn-form-page.
     5. on the statement-page, 'DELETE' and 'EDIT' options for each txn are needed.
