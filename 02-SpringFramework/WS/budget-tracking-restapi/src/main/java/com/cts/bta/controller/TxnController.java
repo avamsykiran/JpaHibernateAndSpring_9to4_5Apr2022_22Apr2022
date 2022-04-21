@@ -51,23 +51,29 @@ public class TxnController {
 	}
 
 	@PostMapping
+	public ResponseEntity<Txn> addTxn(@RequestBody @Valid Txn txn, BindingResult bindingResult) throws BadTxnException {
+		return saveTxn(txn, bindingResult, "ADD");
+	}
+
 	@PutMapping
-	public ResponseEntity<Txn> saveTxn(
-			@RequestBody @Valid Txn txn, 
-			BindingResult bindingResult, HttpServletRequest req)
+	public ResponseEntity<Txn> updateTxn(@RequestBody @Valid Txn txn, BindingResult bindingResult)
+			throws BadTxnException {
+		return saveTxn(txn, bindingResult, "UPDATE");
+	}
+
+	public ResponseEntity<Txn> saveTxn(@RequestBody @Valid Txn txn, BindingResult bindingResult, String operation)
 			throws BadTxnException {
 
 		if (bindingResult.hasErrors()) {
-			String errs = bindingResult.getAllErrors().stream()
-					.map(errObj -> errObj.getDefaultMessage())
+			String errs = bindingResult.getAllErrors().stream().map(errObj -> errObj.getDefaultMessage())
 					.reduce((msg1, msg2) -> msg1 + ", " + msg2).orElse(null);
 
 			throw new BadTxnException(errs);
 		}
 
 		ResponseEntity<Txn> re = null;
-		
-		if (req.getMethod().equalsIgnoreCase("POST")) {
+
+		if (operation.equalsIgnoreCase("ADD")) {
 			txn = txnService.add(txn);
 			re = new ResponseEntity<Txn>(txn, HttpStatus.CREATED);
 		} else {
@@ -77,4 +83,5 @@ public class TxnController {
 
 		return re;
 	}
+
 }
