@@ -32,11 +32,6 @@ public class TxnController {
 	@Autowired
 	private TxnService txnService;
 
-	@GetMapping
-	public ResponseEntity<List<Txn>> getAllTxns() {
-		return new ResponseEntity<List<Txn>>(txnService.getAll(), HttpStatus.OK);
-	}
-
 	@GetMapping("/{txnId}")
 	public ResponseEntity<Txn> getTxnById(@PathVariable("txnId") Long txnId) {
 		Txn txn = txnService.getById(txnId);

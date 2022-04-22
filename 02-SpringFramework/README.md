@@ -413,3 +413,16 @@ BudgetTrackerApplication - CaseStudy - Monolithic Approach
     5. on the statement-page, 'DELETE' and 'EDIT' options for each txn are needed.
     6. On the statement-page, we have to display the total credit, total debit and
         the current balance
+
+BudgetTracker - REST api
+-------------------------------------------------------------------------------------------
+    /accountHolders                 GET     return List<AccountHolder>
+    /accountHolders                 POST    accept AccoutnHolder and return the smae after inserting
+    /accountHolders/{ahId}          GET     return AccountHolder
+    /accountHolders/{ahId}/txns     GET     return List<Txn> related to the given accoutnHolder
+
+    /txns                           POST    accept a Txn and return the same after insertion
+    /txns                           PUT     accept a Txn and return the same after updation
+    /txns/{txnId}                   GET     return Txn
+    /txns/{txnId}                   DELETE  delete the txn as per the givne id
+
